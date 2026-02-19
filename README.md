@@ -1,34 +1,16 @@
-# Atom - A vibrant portfolio template
-#### Preview
+# React + Vite
 
- - [Demo](https://themewagon.github.io/atom/)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-#### Download
- - [Download from ThemeWagon](https://themewagon.com/themes/atom/)
+Currently, two official plugins are available:
 
-## Getting Started
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-1. Clone Repository
-```
-git clone https://github.com/themewagon/atom.git
-```
-2. Install Dependencies
-```
-npm i
-```
-3. Run the development server:
+## React Compiler
 
-```bash
-npm serve .
-```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Author 
-```
-Design and code is completely written by Red Pixel Themes and development team. 
-```
+## Expanding the ESLint configuration
 
-## License
-
- - Design and Code is Copyright &copy; <a href="https://redpixelthemes.gumroad.com/" target="_blank">Red Pixel Themes</a>
- - Licensed cover under [MIT]
- - Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
