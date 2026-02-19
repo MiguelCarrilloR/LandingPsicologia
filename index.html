@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Dra. Sofía Ramírez | Psicóloga Clínica</title>
+  <meta name="description" content="Psicóloga clínica especializada en ansiedad, terapia cognitivo-conductual y bienestar emocional. Consulta presencial y online." />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --sage: #7a9e8a;
+      --sage-light: #b2cdc0;
+      --sage-pale: #e8f0ec;
+      --cream: #faf7f2;
+      --warm-white: #f5f0e8;
+      --stone: #8b7d6b;
+      --stone-dark: #5c4f42;
+      --charcoal: #2e2a26;
+      --blush: #d4a5a5;
+      --blush-light: #f0dede;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(250, 247, 242, 0.96);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+      backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav.scrolled .nav-logo { color: var(--charcoal); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.3s;
+    }
+    nav.scrolled .nav-links a { color: var(--stone); }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta {
+      background: var(--sage); color: #fff !important;
+      padding: 0.5rem 1.25rem; border-radius: 2rem;
+      transition: background 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--stone-dark) !important; color: #fff !important; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: #fff; transition: background 0.3s;
+    }
+    nav.scrolled .nav-hamburger span { background: var(--charcoal); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #3d5a4a 0%, #5d7a6a 40%, #7a9e8a 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 7rem 2rem 4rem;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25; pointer-events: none;
+    }
+    .blob1 { width: 600px; height: 600px; background: var(--blush); top: -200px; right: -150px; }
+    .blob2 { width: 400px; height: 400px; background: #b5cfc0; bottom: -100px; left: -100px; }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1100px; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .hero-text h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.05;
+      color: #fff; margin-bottom: 1.5rem;
+    }
+    .hero-text h1 em { font-style: italic; font-weight: 300; }
+    .hero-text p {
+      font-size: 1.05rem; line-height: 1.75;
+      color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; max-width: 440px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block; padding: 0.85rem 2rem;
+      background: #fff; color: var(--stone-dark);
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+    .btn-outline {
+      display: inline-block; padding: 0.85rem 2rem;
+      border: 1.5px solid rgba(255,255,255,0.6); color: #fff;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+    .hero-photo {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .hero-photo-frame {
+      width: 380px; height: 480px;
+      border-radius: 60% 40% 55% 45% / 50% 45% 55% 50%;
+      overflow: hidden; position: relative;
+      background: linear-gradient(135deg, var(--sage-light), var(--blush-light));
+      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    }
+    .hero-photo-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: saturate(0.9);
+    }
+    .hero-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; color: var(--stone); text-align: center; padding: 2rem;
+      line-height: 1.6;
+    }
+    .hero-badge {
+      position: absolute; bottom: 2rem; right: -1.5rem;
+      background: #fff; border-radius: 1rem; padding: 1rem 1.25rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-badge-icon { font-size: 1.5rem; }
+    .hero-badge p { font-size: 0.78rem; font-weight: 500; color: var(--stone); line-height: 1.3; }
+    .hero-badge strong { display: block; color: var(--charcoal); font-size: 0.9rem; }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 0.75rem; display: block;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15;
+      color: var(--charcoal);
+    }
+    .section-title em { font-style: italic; }
+    .divider { width: 3rem; height: 2px; background: var(--sage); margin: 1.5rem 0; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .about-image-wrap { position: relative; }
+    .about-image {
+      width: 100%; aspect-ratio: 3/4;
+      border-radius: 40% 60% 50% 50% / 40% 40% 60% 60%;
+      background: linear-gradient(150deg, var(--sage-pale), var(--blush-light));
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+    .about-image .placeholder-text {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--stone);
+      text-align: center; padding: 3rem; line-height: 1.6;
+    }
+    .about-stat-card {
+      position: absolute; bottom: -1.5rem; right: -2rem;
+      background: var(--charcoal); color: #fff;
+      border-radius: 1rem; padding: 1.25rem 1.5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    .about-stat-card .number {
+      font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 600;
+      line-height: 1; color: var(--sage-light);
+    }
+    .about-stat-card p { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 0.25rem; }
+    .about-content p {
+      font-size: 1rem; line-height: 1.85; color: var(--stone); margin-bottom: 1.25rem;
+    }
+    .credentials { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+    .credential {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.9rem; color: var(--stone-dark);
+    }
+    .credential-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--sage);
+      flex-shrink: 0; margin-top: 0.35rem;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--charcoal); }
+    #services .section-label { color: var(--sage-light); }
+    #services .section-title { color: #fff; }
+    #services .divider { background: var(--blush); }
+    .services-intro { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.6); max-width: 520px; margin-top: 1rem; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.25rem; padding: 2rem 1.75rem;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,0.1); transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--sage); display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400;
+      color: #fff; margin-bottom: 0.75rem;
+    }
+    .service-card p { font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.55); }
+
+    /* ── APPROACH / METHOD ── */
+    #approach { background: var(--sage-pale); }
+    .approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+    .approach-visual {
+      position: relative; height: 420px;
+    }
+    .approach-circle {
+      position: absolute; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; text-align: center;
+    }
+    .ac1 { width: 280px; height: 280px; background: var(--sage); top: 0; left: 0; }
+    .ac2 { width: 200px; height: 200px; background: var(--blush); bottom: 20px; right: 20px; }
+    .ac3 { width: 130px; height: 130px; background: var(--cream); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .circle-text { color: #fff; font-family: 'Cormorant Garamond', serif; padding: 1.5rem; }
+    .circle-text .num { font-size: 2.5rem; font-weight: 600; line-height: 1; display: block; }
+    .circle-text p { font-size: 0.82rem; line-height: 1.4; margin-top: 0.25rem; opacity: 0.9; }
+    .ac3 .circle-text { color: var(--sage); }
+    .approach-steps { display: flex; flex-direction: column; gap: 1.5rem; }
+    .step {
+      display: flex; gap: 1.25rem; align-items: flex-start;
+      background: #fff; border-radius: 1rem; padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--sage);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 500; flex-shrink: 0;
+    }
+    .step h4 { font-size: 0.95rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.25rem; }
+    .step p { font-size: 0.85rem; line-height: 1.65; color: var(--stone); }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--cream); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .testimonial {
+      background: var(--warm-white); border-radius: 1.25rem; padding: 2rem;
+      position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testimonial:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .testimonial::before {
+      content: '\201C';
+      position: absolute; top: 1rem; left: 1.5rem;
+      font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300;
+      color: var(--sage-light); line-height: 1;
+    }
+    .testimonial p { font-size: 0.92rem; line-height: 1.8; color: var(--stone); margin-top: 2.5rem; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.5rem; }
+    .author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--sage-light); display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--stone-dark); font-weight: 600;
+    }
+    .author-info strong { display: block; font-size: 0.85rem; font-weight: 500; color: var(--charcoal); }
+    .author-info span { font-size: 0.78rem; color: var(--stone); }
+    .stars { color: #c9a96e; font-size: 0.75rem; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+
+    /* ── FAQ ── */
+    #faq { background: var(--sage-pale); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+    .faq-intro p { font-size: 1rem; line-height: 1.8; color: var(--stone); margin-top: 1rem; }
+    .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .faq-item {
+      background: #fff; border-radius: 0.75rem; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 1.25rem; text-align: left;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; color: var(--charcoal);
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--sage); }
+    .faq-q .arrow { font-size: 1.1rem; transition: transform 0.3s; color: var(--sage); }
+    .faq-q.open .arrow { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+      font-size: 0.87rem; line-height: 1.75; color: var(--stone); padding: 0 1.25rem;
+    }
+    .faq-a.open { max-height: 200px; padding: 0.25rem 1.25rem 1.1rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--charcoal); }
+    #contact .section-label { color: var(--sage-light); }
+    #contact .section-title { color: #fff; }
+    #contact .divider { background: var(--blush); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; margin-top: 3rem; align-items: start; }
+    .contact-info p { font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.6); margin-top: 1rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-detail strong { display: block; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-light); }
+    .contact-detail span { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label { display: block; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 0.6rem; padding: 0.85rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: #fff;
+      transition: border-color 0.2s; outline: none; resize: none;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--sage); }
+    .form-group select option { background: var(--charcoal); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn-submit {
+      width: 100%; padding: 1rem; background: var(--sage); color: #fff; border: none;
+      border-radius: 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.05em; cursor: pointer; transition: background 0.2s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .btn-submit:hover { background: var(--sage-light); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1e1b18; padding: 2.5rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: rgba(255,255,255,0.5); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--sage-light); }
+
+    /* ── MOBILE NAV OVERLAY ── */
+    .mobile-nav-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(46,42,38,0.97); flex-direction: column;
+      align-items: center; justify-content: center; gap: 2.5rem;
+    }
+    .mobile-nav-overlay.open { display: flex; }
+    .mobile-nav-overlay a {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300;
+      color: rgba(255,255,255,0.85); text-decoration: none; letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .mobile-nav-overlay a:hover { color: var(--sage-light); }
+    .mobile-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: none; border: none; color: rgba(255,255,255,0.5); font-size: 2rem; cursor: pointer;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+      .hero-btns { justify-content: center; }
+      .hero-text p { margin: 0 auto 2.5rem; }
+      .hero-photo-frame { width: 280px; height: 350px; }
+      .hero-badge { right: 0; }
+      .about-grid, .approach-grid, .contact-grid, .faq-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .about-stat-card { right: 0; bottom: -1rem; }
+      .approach-visual { height: 300px; }
+      .ac1 { width: 220px; height: 220px; }
+      .ac2 { width: 160px; height: 160px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.25rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobileNav">
+  <button class="mobile-close" onclick="closeMobile()">✕</button>
+  <a href="#about" onclick="closeMobile()">Sobre mí</a>
+  <a href="#services" onclick="closeMobile()">Servicios</a>
+  <a href="#approach" onclick="closeMobile()">Mi enfoque</a>
+  <a href="#testimonials" onclick="closeMobile()">Testimonios</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" onclick="closeMobile()">Contacto</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Dra. Sofía Ramírez</a>
+  <ul class="nav-links">
+    <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#approach">Mi enfoque</a></li>
+    <li><a href="#testimonials">Testimonios</a></li>
+    <li><a href="#contact" class="nav-cta">Agendar cita</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="openMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>Un espacio<br>para <em>sanar</em><br>y crecer</h1>
+      <p>Acompañamiento psicológico personalizado para que encuentres equilibrio, claridad y bienestar emocional duradero.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Agendar primera sesión</a>
+        <a href="#about" class="btn-outline">Conoce más</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <div class="hero-photo-placeholder">
+          📸 Coloca aquí tu fotografía profesional
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-icon">🌿</div>
+        <p><strong>+8 años</strong> de experiencia clínica</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap fade-up">
+        <div class="about-image">
+          <div class="placeholder-text">📸 Foto de perfil o espacio de consulta</div>
+        </div>
+        <div class="about-stat-card">
+          <span class="number">+500</span>
+          <p>pacientes acompañados</p>
+        </div>
+      </div>
+      <div class="about-content fade-up">
+        <span class="section-label">Sobre mí</span>
+        <h2 class="section-title">Hola, soy Sofía.<br>Psicóloga <em>clínica</em></h2>
+        <div class="divider"></div>
+        <p>Soy psicóloga clínica con más de 8 años acompañando a personas en procesos de cambio, crecimiento y sanación emocional. Mi trabajo se centra en crear un espacio seguro, sin juicios, donde puedas explorar lo que sientes y encontrar herramientas reales.</p>
+        <p>Creo profundamente en la capacidad de cada persona para transformar su historia y construir una vida más plena y auténtica.</p>
+        <div class="credentials">
+          <div class="credential"><div class="credential-dot"></div><span>Licenciada en Psicología — Universidad Autónoma</span></div>
+          <div class="credential"><div class="credential-dot"></div><span>Máster en Terapia Cognitivo-Conductual (TCC)</span></div>
+          <div class="credential"><div class="credential-dot"></div><span>Formación en EMDR para trauma</span></div>
+          <div class="credential"><div class="credential-dot"></div><span>Miembro del Colegio de Psicólogos — Cédula 12345678</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <span class="section-label">Lo que ofrezco</span>
+    <h2 class="section-title" style="color:#fff">Servicios <em>terapéuticos</em></h2>
+    <div class="divider"></div>
+    <p class="services-intro">Cada proceso terapéutico es único. Adapto el enfoque a tus necesidades específicas para acompañarte de la manera más efectiva.</p>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">🧠</div>
+        <h3>Terapia Individual</h3>
+        <p>Espacio personal para trabajar ansiedad, depresión, autoestima, duelos, relaciones y cualquier dificultad emocional que estés atravesando.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.1s">
+        <div class="service-icon">💞</div>
+        <h3>Terapia de Pareja</h3>
+        <p>Acompañamiento a parejas que buscan mejorar la comunicación, resolver conflictos y fortalecer su vínculo afectivo.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.2s">
+        <div class="service-icon">🌱</div>
+        <h3>Manejo de Ansiedad</h3>
+        <p>Técnicas especializadas para comprender, reducir y gestionar la ansiedad en todas sus formas: generalizada, social o por pánico.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.3s">
+        <div class="service-icon">🔆</div>
+        <h3>Trauma y EMDR</h3>
+        <p>Procesamiento de experiencias traumáticas a través de técnicas especializadas para liberar el peso del pasado y vivir con mayor libertad.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.4s">
+        <div class="service-icon">💻</div>
+        <h3>Consulta Online</h3>
+        <p>Sesiones de videollamada para personas que prefieren la comodidad de su hogar o que se encuentran fuera de la ciudad.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.5s">
+        <div class="service-icon">🧘</div>
+        <h3>Mindfulness Clínico</h3>
+        <p>Integración de prácticas de atención plena en el proceso terapéutico para desarrollar mayor consciencia y regulación emocional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="container">
+    <span class="section-label">Mi metodología</span>
+    <h2 class="section-title">Cómo <em>trabajo contigo</em></h2>
+    <div class="divider"></div>
+    <div class="approach-grid">
+      <div class="approach-visual fade-up">
+        <div class="approach-circle ac1">
+          <div class="circle-text">
+            <span class="num">TCC</span>
+            <p>Terapia Cognitivo-Conductual</p>
+          </div>
+        </div>
+        <div class="approach-circle ac2">
+          <div class="circle-text">
+            <span class="num">🌿</span>
+            <p>Enfoque humanista integrador</p>
+          </div>
+        </div>
+        <div class="approach-circle ac3">
+          <div class="circle-text" style="color:var(--sage)">
+            <span class="num" style="font-size:1.8rem">Tú</span>
+            <p style="font-size:0.7rem">en el centro</p>
+          </div>
+        </div>
+      </div>
+      <div class="approach-steps fade-up">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h4>Primera sesión de exploración</h4>
+            <p>Conversamos sin presiones para conocer tu historia, tus necesidades y lo que esperas del proceso. Sin compromisos iniciales.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h4>Plan terapéutico personalizado</h4>
+            <p>Diseñamos juntos un plan claro con objetivos concretos, adaptado a tu ritmo y a tus circunstancias de vida.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h4>Acompañamiento y herramientas</h4>
+            <p>Trabajamos sesión a sesión, integrando técnicas basadas en evidencia y ejercicios prácticos para el día a día.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div>
+            <h4>Cierre y consolidación</h4>
+            <p>Cuando alcanzas tus objetivos, cerramos el proceso de manera consciente, asegurando que tengas recursos propios para seguir adelante.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <span class="section-label">Voces de mis pacientes</span>
+    <h2 class="section-title">Lo que <em>dicen</em> de su experiencia</h2>
+    <div class="divider"></div>
+    <div class="testimonials-grid">
+      <div class="testimonial fade-up">
+        <div class="stars">★★★★★</div>
+        <p>La Dra. Sofía me ayudó a salir de un ciclo de ansiedad que me tenía paralizada. Su calidez y profesionalismo hacen que cada sesión sea un espacio real de transformación.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div class="author-info">
+            <strong>María G.</strong>
+            <span>Paciente por 18 meses</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial fade-up" style="transition-delay:0.15s">
+        <div class="stars">★★★★★</div>
+        <p>Llegué sin esperanza después de años cargando un trauma. El trabajo con EMDR fue revelador. Hoy puedo hablar de mi pasado sin que me lastime como antes.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">C</div>
+          <div class="author-info">
+            <strong>Carlos R.</strong>
+            <span>Paciente por 1 año</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial fade-up" style="transition-delay:0.3s">
+        <div class="stars">★★★★★</div>
+        <p>La terapia de pareja nos salvó. Aprendimos a comunicarnos de una manera que nunca habíamos podido. Nuestra relación es completamente diferente hoy.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">L</div>
+          <div class="author-info">
+            <strong>Laura & Andrés</strong>
+            <span>Pacientes por 8 meses</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-intro">
+        <span class="section-label">Preguntas frecuentes</span>
+        <h2 class="section-title">¿Tienes <em>dudas</em>?</h2>
+        <div class="divider"></div>
+        <p>Es normal tener preguntas antes de iniciar un proceso terapéutico. Aquí respondo las más comunes. Si la tuya no está, escríbeme con confianza.</p>
+        <br>
+        <a href="#contact" class="btn-primary" style="background:var(--sage);color:#fff;display:inline-block;padding:0.75rem 1.75rem;border-radius:2rem;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;text-decoration:none;">Hacer una pregunta</a>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Cuánto dura una sesión y cuánto cuesta?
+            <span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Las sesiones individuales tienen una duración de 50 minutos. Las de pareja, 60 minutos. El costo varía según el tipo de consulta; contáctame para conocer las tarifas actuales y opciones de pago.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Cuántas sesiones voy a necesitar?
+            <span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Depende de cada persona y objetivo. Algunos procesos se resuelven en 8-12 sesiones; otros requieren más tiempo. En la primera sesión podemos hablar de expectativas realistas para tu caso.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿La información que comparto es confidencial?
+            <span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Sí, absolutamente. Todo lo que se habla en terapia está protegido por secreto profesional y la ética del Código de Salud. Tu privacidad es una prioridad.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Cómo son las sesiones online?
+            <span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Las sesiones online se realizan por videollamada (Zoom, Google Meet o la plataforma que prefieras). Son igual de efectivas que las presenciales. Solo necesitas un espacio privado y conexión estable.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Puedo cancelar o reprogramar una cita?
+            <span class="arrow">+</span>
+          </button>
+          <div class="faq-a">Sí, con al menos 24 horas de anticipación sin ningún costo. Cancelaciones con menos tiempo pueden tener un cargo parcial. Lo importante es que puedas asistir con la mente tranquila.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="section-label">Agendar cita</span>
+        <h2 class="section-title">Empieza tu <em>proceso</em> hoy</h2>
+        <div class="divider"></div>
+        <p>El primer paso es el más importante. Escríbeme y en menos de 24 horas te confirmo disponibilidad para una primera sesión sin compromisos.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📱</div>
+            <div>
+              <strong>WhatsApp</strong>
+              <span>+52 55 1234 5678</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <div>
+              <strong>Correo</strong>
+              <span>sofia@psicologiaramirez.com</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div>
+              <strong>Consulta presencial</strong>
+              <span>Av. Insurgentes Sur 1234, CDMX</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🕐</div>
+            <div>
+              <strong>Horarios</strong>
+              <span>Lunes a viernes: 9:00 – 19:00 h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre completo" />
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="tu@email.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" placeholder="+52 55 0000 0000" />
+          </div>
+          <div class="form-group">
+            <label>Modalidad preferida</label>
+            <select>
+              <option value="">Selecciona...</option>
+              <option>Presencial</option>
+              <option>Online (videollamada)</option>
+              <option>Sin preferencia</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Motivo de consulta</label>
+          <select>
+            <option value="">¿En qué puedo ayudarte?</option>
+            <option>Ansiedad o estrés</option>
+            <option>Depresión o tristeza</option>
+            <option>Trauma o EMDR</option>
+            <option>Terapia de pareja</option>
+            <option>Autoestima o crecimiento personal</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje (opcional)</label>
+          <textarea rows="4" placeholder="Cuéntame brevemente cómo te sientes o qué estás buscando..."></textarea>
+        </div>
+        <button class="btn-submit">Enviar mensaje →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Dra. Sofía Ramírez · Psicóloga Clínica</div>
+  <div class="footer-links">
+    <a href="#about">Sobre mí</a>
+    <a href="#services">Servicios</a>
+    <a href="#contact">Contacto</a>
+    <a href="#">Aviso de privacidad</a>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile nav
+  function openMobile() { document.getElementById('mobileNav').classList.add('open'); }
+  function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); }
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+  }
+
+  // Fade-up observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
